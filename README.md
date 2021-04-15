@@ -35,11 +35,7 @@ Note that this will log out *all* users who are currently logged in.
 
 ## Installation
 
-```
-pip install jupyterhub-couchdb-authenticator
-```
-
-Should install it. It has no additional dependencies beyond JupyterHub.
+This repository is still under development. 
 
 You can then use this as your authenticator by adding the following line to
 your `jupyterhub_config.py`:
