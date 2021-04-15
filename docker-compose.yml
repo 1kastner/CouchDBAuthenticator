@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  jupyterhub:
+    restart: always
+    build:
+      context: ./
+      dockerfile: ./minimal-jupyterhub-example/jupyterhub/Dockerfile
+    hostname: jupyterhub
+    env_file:
+      - ./minimal-jupyterhub-example/couchdb_credentials.env
+    ports:
+      - "8000:8000"
+  couchdb:
+    restart: always
+    image: couchdb
+    ports:
+    - "5984:5984"
+    env_file:
+      - ./minimal-jupyterhub-example/couchdb_credentials.env

@@ -1,0 +1,8 @@
+// For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
+// https://github.com/microsoft/vscode-dev-containers/
+{
+	"name": "JupyterHub",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "jupyterhub",
+	"workspaceFolder": "/root",
+}
