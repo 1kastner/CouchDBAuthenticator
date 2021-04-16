@@ -35,7 +35,9 @@ Note that this will log out *all* users who are currently logged in.
 
 ## Installation
 
-This repository is still under development. 
+```
+pip install jupyterhub-couchdb-authenticator
+```
 
 You can then use this as your authenticator by adding the following line to
 your `jupyterhub_config.py`:
@@ -64,5 +66,6 @@ configuration, and the `c` represents the
 
 ## Development
 
-For Visual Studio Code, the `.devcontainer` directory has been prepared.
-When you enter the Dev Container, you are on a small JupyterHub server with the CouchDBAuthenticator already being installed.
+When you want to try out the current installer, on the project root level you can run
+`docker-compose up --build --force-recreate`.
+This automatically sets up a minimal jupyterhub example with this authenticator.

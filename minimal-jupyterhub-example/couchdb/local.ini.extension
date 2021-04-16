@@ -1,0 +1,4 @@
+[ssl]
+enable = true
+cert_file = /etc/couchdb/cert/cert.pem
+key_file = /etc/couchdb/cert/key.pem

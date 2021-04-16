@@ -13,8 +13,9 @@ services:
       - "8000:8000"
   couchdb:
     restart: always
-    image: couchdb
-    ports:
-    - "5984:5984"
+    build: ./minimal-jupyterhub-example/couchdb/
+    hostname: couchdb
     env_file:
       - ./minimal-jupyterhub-example/couchdb_credentials.env
+    ports:
+    - "6984:6984"
