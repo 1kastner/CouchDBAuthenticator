@@ -82,6 +82,7 @@ for some sample applications.
 When you want to try out the current installer, on the project root level you can run
 ```
 docker-compose up --build --force-recreate
-```.
+```
+
 This automatically sets up a minimal jupyterhub example with this authenticator.
 Check the directory `minimal-jupyterhub-example` for more insights.
