@@ -1,5 +1,8 @@
 import os
 
+c.JupyterHub.ssl_key = '/srv/jupyterhub/cert/key.pem'
+c.JupyterHub.ssl_cert = '/srv/jupyterhub/cert/cert.pem'
+
 c.JupyterHub.authenticator_class = 'couchdbauthenticator.CouchDBAuthenticator'
 c.CouchDBAuthenticator.couchdb_url = "couchdb:6984"
 c.CouchDBAuthenticator.ssl_verification = False
