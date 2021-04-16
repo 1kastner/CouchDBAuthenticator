@@ -9,6 +9,8 @@ is that the JupyterHub can tell the different users apart.
 This authenticator harmonizes well with a system user agnostic spawner such as 
 [dockerspawner](https://github.com/jupyterhub/dockerspawner) which allow the whole JupyterHub
 to be torn down after the besaid event without the need of deleting operating system users.
+The code of this project has been inspired by the 
+[Remote CSV Authenticator](https://github.com/yuvipanda/jupyterhub-remotecsv-authenticator).
 
 ## CouchDB Document Format
 
