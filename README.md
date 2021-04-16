@@ -45,7 +45,7 @@ You can then use this as your authenticator by adding the following line to
 your `jupyterhub_config.py`:
 
 ```
-c.JupyterHub.authenticator_class = couchdbauthenticator.CouchDBAuthenticator'
+c.JupyterHub.authenticator_class = 'couchdbauthenticator.CouchDBAuthenticator'
 ```
 
 ## Configuration
@@ -80,6 +80,8 @@ for some sample applications.
 ## Development
 
 When you want to try out the current installer, on the project root level you can run
-`docker-compose up --build --force-recreate`.
+```
+docker-compose up --build --force-recreate
+```.
 This automatically sets up a minimal jupyterhub example with this authenticator.
 Check the directory `minimal-jupyterhub-example` for more insights.
