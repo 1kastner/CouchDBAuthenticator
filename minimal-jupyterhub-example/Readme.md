@@ -24,3 +24,9 @@ If you want to disable the account without permanently deleting username and pas
 With that command line tool you can deactivate and reactivate accounts.
 Be aware that any change only affects new login attempts.
 If a user still has an open session, it will not be affected.
+First, ensure that the user 'hey' is logged out.
+Then you can run
+`python ./control_users_database.py deactivate hey`
+to disable the login of that user.
+If you want to reactivate a user account, simply run
+`python ./control_users_database.py reactivate hey`.
