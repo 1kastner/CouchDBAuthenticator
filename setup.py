@@ -8,7 +8,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='jupyterhub-couchdb-authenticator',
-    version='0.1c',
+    version='0.1',
     description='Couchdb Authenticator for JupyterHub',
     long_description=long_description,
     long_description_content_type='text/markdown',
