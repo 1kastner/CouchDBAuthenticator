@@ -12,6 +12,11 @@ class CouchDBConnection:
     """
 
     def __init__(self, server_url, username, password, ssl_verification=True):
+        """
+        The username and password are used to log into the CouchDB.
+        As the database 'users' is deleted and recreated, that user must be
+        an administrator of the CouchDB.
+        """
         self.server_url = f"https://{server_url}/"
         self.username = username
         self.auth = requests.auth.HTTPBasicAuth(username, password)
@@ -19,7 +24,7 @@ class CouchDBConnection:
 
     def reset_users_database(self):
         """
-        Recreates the database 'users' (also applicable if previously not present)
+        (Re-)Creates the database 'users'
         """
         response_1 = requests.delete(self.server_url + "users", auth=self.auth, verify=self.ssl_verification)
         assert response_1.status_code in (200, 202, 404), "Deletion of database 'users' failed"
@@ -28,16 +33,28 @@ class CouchDBConnection:
 
     def restrict_access_to_couchdb_user(self):
         """
-        Per default, a CouchDB database is readable without authentication.
-        Hence, anybody could read the stored passwords, not desirable!
+        Cited from the documentation at https://docs.couchdb.org/en/latest/api/database/security.html
+
+        > Having no admins, only server admins (with the reserved _admin role) are able to update design
+        > document and make other admin level changes.
+        >
+        > Having no members, any user can write regular documents (any non-design document) and read documents
+        > from the database.
         """
         security_endpoint = self.server_url + "/users/_security"
         security_document = {
-            "admins":{"names":[self.username]}
+            "admins":{
+                "names": []
+            },
+            "members":{
+                "names": [self.username]
+            },
         }
-        response = requests.put(security_endpoint, json=security_document, auth=self.auth, 
+        response_1 = requests.put(security_endpoint, json=security_document, auth=self.auth, 
             verify=self.ssl_verification)
-        assert response.status_code == 200, "Security documet could not be inserted"
+        assert response_1.status_code == 200, "Security documet could not be inserted"
+        response_2 = requests.get(self.server_url + "users", verify=self.ssl_verification)
+        assert response_2.status_code == 401, "Database still accessible from unauthenticated users"
 
     def add_new_user(self, username, password):
         """
@@ -53,6 +70,9 @@ class CouchDBConnection:
         assert response.status_code in (201, 202), "User could not be created"
 
     def _find_user(self, username):
+        """
+        Find user in database.
+        """
         search_url = self.server_url + "/users/_find"
         query = {
             "selector" : {
