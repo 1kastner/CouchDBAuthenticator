@@ -79,12 +79,9 @@ This is for pure convenience.
 See `minimal-jupyterhub-example/seed_users_database.py` and `minimal-jupyterhub-example/control_users_database.py`
 for some sample applications.
 
-## Development
+## Minimal Example and Development
 
-When you want to try out the current installer, on the project root level you can run
-```
-docker-compose up --build --force-recreate
-```
-
-This automatically sets up a minimal jupyterhub example with this authenticator.
-Check the directory `minimal-jupyterhub-example` for more insights.
+For running the mininmal example, you need to clone the GitHub repository.
+Check
+[this explanation](https://github.com/1kastner/CouchDBAuthenticator/tree/main/minimal-jupyterhub-example)
+for more insights.

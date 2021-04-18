@@ -8,7 +8,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='jupyterhub-couchdb-authenticator',
-    version='0.2',
+    version='0.3',
     description='Couchdb Authenticator for JupyterHub',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -18,7 +18,11 @@ setup(
     license='MIT',
     packages=['couchdbauthenticator'],
     install_requires=[
-        'requests',
-        'python-dotenv'
+        'requests'
     ],
+    extras_require={
+        'example': [
+            'python-dotenv'
+        ]
+    }
 )
