@@ -1,5 +1,5 @@
 """
-Do some settings to reduce the logging
+Do some settings to reduce the logging.
 """
 
 import requests

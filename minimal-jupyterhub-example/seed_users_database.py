@@ -4,6 +4,8 @@ Seed the CouchDB 'users' database for the authenticator.
 
 import os
 import sys
+import warnings
+warnings.filterwarnings('once', message='Unverified HTTPS request')
 
 import dotenv
 

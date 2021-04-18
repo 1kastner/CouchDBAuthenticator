@@ -4,6 +4,8 @@ Check the activation/deactivation of user accounts.
 
 import os
 import sys
+import warnings
+warnings.filterwarnings('once', message='Unverified HTTPS request')
 
 import dotenv
 
@@ -34,5 +36,8 @@ invocation = {
     "deactivate" : con.deactivate_user
 }[sys.argv[1]]
 
-for username in sys.argv[2:]:
+usernames_to_deactivate = sys.argv[2:]
+print("Deactivate users:")
+for username in usernames_to_deactivate:
+    print("- " + username)
     invocation(username)
