@@ -1,9 +1,13 @@
 """
-Do some settings to reduce the logging.
+Given the CouchDB Docker container, still some settings need to be made manually
+after starting the Docker container. This helps to reduce the amount of logged
+messages of the CouchDB Docker container.
 """
 
 import requests
 import dotenv
+import warnings
+warnings.filterwarnings('once', message='Unverified HTTPS request')
 
 config = dotenv.dotenv_values("couchdb_credentials.env")
 username = config["COUCHDB_USER"]
@@ -12,5 +16,7 @@ password = config["COUCHDB_PASSWORD"]
 # Assume Docker host to be localhost
 server_url = "https://localhost:6984/"
 
-response_1 = requests.put(server_url + "_users", auth=requests.auth.HTTPBasicAuth(username, password), verify=False)
-assert response_1.status_code in (201, 202), "Creation of database '_users' failed"
+# Create CouchDB system database '_users'
+# See https://github.com/apache/couchdb-docker#no-system-databases-until-the-installation-is-finalized for details.
+response = requests.put(server_url + "_users", auth=requests.auth.HTTPBasicAuth(username, password), verify=False)
+assert response.status_code in (201, 202), "Creation of database '_users' failed"
