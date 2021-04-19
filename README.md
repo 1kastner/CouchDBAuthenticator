@@ -67,6 +67,13 @@ configuration, and the `c` represents the
   The password belonging to the username above.
   It is adviced to use environment variables and *not* to
   hardcode the credentials into the configuration.
+- `CouchDBAuthenticator.ssl_verification`: 
+  This parameter is handed over to the requests module and interpreted by it.
+  The value `True` ensures that the SSL certificate is verified.
+  The value `False` disables any kind of verification.
+  A string value is interpreted as a path pointing to the certificate you expect to see.
+  For more information, check
+  [the docs of requests](https://docs.python-requests.org/en/master/user/advanced/#ssl-cert-verification).
 
 ## Adding and Deactivating Users
 
