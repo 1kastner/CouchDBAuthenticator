@@ -18,7 +18,11 @@ setup(
     license='MIT',
     packages=['couchdbauthenticator'],
     install_requires=[
-        'requests'
+        'requests',
+
+        'jupyterhub',
+        'tornado',
+        'traitlets'
     ],
     extras_require={
         'example': [
