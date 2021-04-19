@@ -10,4 +10,4 @@ RUN cd /etc/couchdb/cert \
     && chmod 600 key.pem cert.pem \
     && chown couchdb key.pem cert.pem
 
-RUN cat /etc/couchdb/cert/local.ini.extension > /opt/couchdb/etc/local.ini
+RUN cat /etc/couchdb/cert/local.ini.extension >> /opt/couchdb/etc/local.ini
