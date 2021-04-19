@@ -19,6 +19,8 @@ This automatically starts the required Docker containers.
   Authenticate yourself with the credentials from `couchdb_credentials.env`.
 - The JupyterHub spawns at https://localhost:8000 with a self-signed certificate.
   First, you can't log in as no user has yet been properly set up.
+If you have changed something about the CouchDB document format, you might also want to delete the corresponding Docker volume by invoking `docker volume prune`.
+Be careful, this command wipes *all* Docker volumes!
 
 ## Create Default User
 For the next step, there is `seed_users_database.py` which will do the following:

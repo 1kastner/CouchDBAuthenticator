@@ -61,28 +61,23 @@ class CouchDBConnection:
         Adds new user document to the users database.
         """
         user_doc = {
+            "_id" : username,  # assert uniqueness of username by CouchDB.
             "username": username,
             "password": password,
             "active": True
         }
-        response = requests.post(self.server_url + "users", auth=self.auth, verify=self.ssl_verification,
+        response = requests.put(self.server_url + "users/" + username, auth=self.auth, verify=self.ssl_verification,
             json=user_doc)
-        assert response.status_code in (201, 202), "User could not be created"
+        assert response.status_code != 409, "User already exists in database."
+        assert response.status_code in (201, 202), f"User could not be created. Status code: {response.status_code}"
 
     def _find_user(self, username):
         """
         Find user in database.
         """
-        search_url = self.server_url + "/users/_find"
-        query = {
-            "selector" : {
-                "username" : username
-            },
-            "limit" : 1
-        }
-        response = requests.post(search_url, json=query, auth=self.auth, verify=self.ssl_verification)
-        parsed_response = response.json()
-        user_doc = parsed_response["docs"][0]
+        retrieve_url = self.server_url + "/users/" + username  # username is docid
+        response = requests.get(retrieve_url, auth=self.auth, verify=self.ssl_verification)
+        user_doc = response.json()
         return user_doc
 
     def deactivate_user(self, username):
