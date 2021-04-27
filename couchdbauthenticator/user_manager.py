@@ -61,12 +61,12 @@ class CouchDBConnection:
         Adds new user document to the users database.
         """
         user_doc = {
-            "_id" : username,  # assert uniqueness of username by CouchDB.
             "username": username,
             "password": password,
             "active": True
         }
-        response = requests.put(self.server_url + "users/" + username, auth=self.auth, verify=self.ssl_verification,
+        docid = username  # Assert uniqueness
+        response = requests.put(self.server_url + "users/" + docid, auth=self.auth, verify=self.ssl_verification,
             json=user_doc)
         assert response.status_code != 409, "User already exists in database."
         assert response.status_code in (201, 202), f"User could not be created. Status code: {response.status_code}"
