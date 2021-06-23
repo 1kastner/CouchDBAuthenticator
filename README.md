@@ -1,5 +1,7 @@
 # CouchDB Authenticator for JupyterHub
 
+[![Downloads](https://pepy.tech/badge/jupyterhub-couchdb-authenticator)](https://pepy.tech/project/jupyterhub-couchdb-authenticator)
+
 This is a simple authenticator for a [JupyterHub](http://github.com/jupyter/jupyterhub/)
 that fetches user authentication information from a CouchDB over HTTPS.
 This authenticator is designed for events where the organizer distributes
