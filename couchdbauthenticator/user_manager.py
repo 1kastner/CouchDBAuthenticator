@@ -5,6 +5,7 @@ A client API to manage the user accounts of the CouchDBAuthenticator.
 import requests
 
 
+# noinspection PyUnresolvedReferences
 class CouchDBConnection:
     """
     See the following for more information:
@@ -63,7 +64,7 @@ class CouchDBConnection:
 
     def add_new_user(self, username, password):
         """
-        Adds new user document to the users database.
+        Adds new user document to the 'users' database.
         """
         user_doc = {
             "username": username,

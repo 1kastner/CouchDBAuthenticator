@@ -4,6 +4,7 @@ Check the activation/deactivation of user accounts.
 
 import sys
 import warnings
+
 import dotenv
 
 from couchdbauthenticator.user_manager import CouchDBConnection

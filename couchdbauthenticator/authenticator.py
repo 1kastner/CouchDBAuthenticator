@@ -8,6 +8,7 @@ from traitlets import Unicode, Bool
 import requests
 
 
+# noinspection PyUnresolvedReferences
 class CouchDBAuthenticator(Authenticator):
     """
     All code needs to be recycled

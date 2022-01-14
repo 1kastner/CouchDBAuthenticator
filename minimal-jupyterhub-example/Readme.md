@@ -1,7 +1,7 @@
 # Minimal JupyterHub Example
 
 This example is only for illustration how the components play together.
-It is inertly insecure and it is not designed to scale.
+It is inertly insecure, and it is not designed to scale.
 Please use proper SSL certificates and configuration!
 This minimal example is used, among others, for the development and the integration testing of the code.
 

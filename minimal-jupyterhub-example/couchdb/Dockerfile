@@ -6,7 +6,7 @@ COPY local.ini.extension /etc/couchdb/cert/local.ini.extension
 
 RUN cd /etc/couchdb/cert \
     && openssl req -nodes -x509 -newkey rsa:4096 \
-    -keyout key.pem -out cert.pem -days 365 -subj '/CN=mylocalcouchdb' \
+    -keyout key.pem -out cert.pem -days 365 -subj '/CN=my-local-couchdb' \
     && chmod 600 key.pem cert.pem \
     && chown couchdb key.pem cert.pem
 
