@@ -1,4 +1,4 @@
-FROM couchdb
+FROM couchdb:latest
 
 RUN mkdir /etc/couchdb/cert && cd /etc/couchdb/cert
 
