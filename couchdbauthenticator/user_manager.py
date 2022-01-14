@@ -4,6 +4,7 @@ A client API to manage the user accounts of the CouchDBAuthenticator.
 
 import requests
 
+
 class CouchDBConnection:
     """
     See the following for more information:
@@ -43,16 +44,20 @@ class CouchDBConnection:
         """
         security_endpoint = self.server_url + "/users/_security"
         security_document = {
-            "admins":{
+            "admins": {
                 "names": []
             },
-            "members":{
+            "members": {
                 "names": [self.username]
             },
         }
-        response_1 = requests.put(security_endpoint, json=security_document, auth=self.auth, 
-            verify=self.ssl_verification)
-        assert response_1.status_code == 200, "Security documet could not be inserted"
+        response_1 = requests.put(
+            security_endpoint,
+            json=security_document,
+            auth=self.auth,
+            verify=self.ssl_verification
+        )
+        assert response_1.status_code == 200, "Security document could not be inserted"
         response_2 = requests.get(self.server_url + "users", verify=self.ssl_verification)
         assert response_2.status_code == 401, "Database still accessible from unauthenticated users"
 
@@ -66,8 +71,12 @@ class CouchDBConnection:
             "active": True
         }
         docid = username  # Assert uniqueness
-        response = requests.put(self.server_url + "users/" + docid, auth=self.auth, verify=self.ssl_verification,
-            json=user_doc)
+        response = requests.put(
+            self.server_url + "users/" + docid,
+            auth=self.auth,
+            verify=self.ssl_verification,
+            json=user_doc
+        )
         assert response.status_code != 409, "User already exists in database."
         assert response.status_code in (201, 202), f"User could not be created. Status code: {response.status_code}"
 
@@ -83,15 +92,21 @@ class CouchDBConnection:
     def deactivate_user(self, username):
         user_doc = self._find_user(username)
         user_doc["active"] = False
-        response = requests.put(self.server_url + "users/" + user_doc["_id"], 
-            auth=self.auth, verify=self.ssl_verification,
-            json=user_doc)
+        response = requests.put(
+            self.server_url + "users/" + user_doc["_id"],
+            auth=self.auth,
+            verify=self.ssl_verification,
+            json=user_doc
+        )
         assert response.status_code in (201, 202), "User document could not be updated"
-        
+
     def reactivate_user(self, username):
         user_doc = self._find_user(username)
         user_doc["active"] = True
-        response = requests.put(self.server_url + "users/" + user_doc["_id"], 
-            auth=self.auth, verify=self.ssl_verification,
-            json=user_doc)
+        response = requests.put(
+            self.server_url + "users/" + user_doc["_id"],
+            auth=self.auth,
+            verify=self.ssl_verification,
+            json=user_doc
+        )
         assert response.status_code in (201, 202), "User document could not be updated"

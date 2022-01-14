@@ -1,0 +1,13 @@
+[flake8]
+exclude =
+    .git
+    venv
+    __pycache__
+    *.egg-info
+    .virtual_documents
+    .github
+
+max-line-length = 120
+
+per-file-ignores =
+    *jupyterhub_config.py*: F824, F821
