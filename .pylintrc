@@ -29,30 +29,15 @@ argument-naming-style=snake_case
 # Naming style matching correct attribute names.
 attr-naming-style=snake_case
 
-# Regular expression matching correct attribute names. Overrides attr-naming-
-# style.
-#attr-rgx=
-
-# Bad variable names which should always be refused, separated by a comma.
-bad-names=foo,
-          bar,
-          baz,
-          toto,
-          tutu,
-          tata
-
 # Good variable names which should always be accepted, separated by a comma.
 good-names=i,
            j,
            k,
-           ex,
-           Run,
            _,
-           df,
-           ax
+           c
 
 
 [FORMAT]
 
 # Maximum number of characters on a single line.
-max-line-length=121
+max-line-length=120
