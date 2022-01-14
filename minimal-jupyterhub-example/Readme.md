@@ -23,7 +23,8 @@ If you have changed something about the CouchDB document format, you might also 
 Be careful, this command wipes *all* Docker volumes!
 
 ## Create Default User
-For the next step, there is `seed_users_database.py` which will do the following:
+For the next step, you run `python seed_users_database.py`.
+This will do the following:
 - Create a database called 'users'
 - Make it only accessible to the CouchDB user used for authentication (here, the CouchDB admin account)
 - Create the user 'hey' with the password 'pss'
@@ -33,15 +34,17 @@ Feel free to adjust the credentials in `seed_users_database.py`.
 ## Improve the Experience
 Now you can use the user 'hey' to log into the JupyterHub.
 If you are annoyed by all the logging the CouchDB does, you might want to run
-`configure_couchdb.py` to silence those warnings.
+`python configure_couchdb.py`
+to silence those warnings.
 
-If you want to disable the account without permanently deleting username and password, you can use `control_users_database.py`.
-With that command line tool you can deactivate and reactivate accounts.
+If you want to disable the account without permanently deleting username and password, you can run
+`python control_users_database.py`.
+With that command line tool, you can deactivate and reactivate accounts.
 Be aware that any change only affects new login attempts.
 If a user still has an open session, it will not be affected.
 First, ensure that the user 'hey' is logged out.
 Then you can run
-`python ./control_users_database.py deactivate hey`
+`python control_users_database.py deactivate hey`
 to disable the login of that user.
 If you want to reactivate a user account, simply run
-`python ./control_users_database.py reactivate hey`.
+`python control_users_database.py reactivate hey`.

@@ -1,6 +1,6 @@
 FROM jupyterhub/jupyterhub:1.3
 
-RUN pip install notebook
+RUN pip --no-cache-dir install notebook
 
 RUN mkdir /srv/jupyterhub/cert \
     && cd /srv/jupyterhub/cert \
@@ -13,6 +13,5 @@ COPY minimal-jupyterhub-example/jupyterhub/jupyterhub_config.py /srv/jupyterhub/
 
 COPY . /root/
 
-RUN pip install -e /root/
-
-RUN adduser --disabled-password --gecos '' hey
+RUN pip install -e /root/ \
+    && adduser --disabled-password --gecos '' hey

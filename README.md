@@ -1,6 +1,7 @@
 # CouchDB Authenticator for JupyterHub
 
 [![Downloads](https://pepy.tech/badge/jupyterhub-couchdb-authenticator)](https://pepy.tech/project/jupyterhub-couchdb-authenticator)
+[![CodeFactor](https://www.codefactor.io/repository/github/1kastner/couchdbauthenticator/badge)](https://www.codefactor.io/repository/github/1kastner/couchdbauthenticator)
 
 This is a simple authenticator for a [JupyterHub](http://github.com/jupyter/jupyterhub/)
 that fetches user authentication information from a CouchDB over HTTPS.
