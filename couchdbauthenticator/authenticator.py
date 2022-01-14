@@ -34,6 +34,7 @@ class CouchDBAuthenticator(Authenticator):
         config=True
     )
 
+    # pylint: disable=invalid-overridden-method
     @gen.coroutine
     def authenticate(self, _, data):
         username = data['username']
