@@ -1,0 +1,58 @@
+[MASTER]
+
+# Files or directories to be skipped. They should be base names, not paths.
+ignore=.git
+
+disable=
+    C0114, # missing-module-docstring -- only modules which are part of the API are always documented
+    C0115, # missing-class-docstring -- only modules which are part of the API are always documented
+    C0116, # missing-function-docstring -- only modules which are part of the API are always documented
+    C0325, # superfluous-parens -- the programmers should decide themselves what is more readable
+    W0201, # attribute-defined-outside-init -- this is up to the author of the code
+    R0801, # code duplication should be avoided by the programmers if reasonable but pylint should not take care
+    W0612, # pylint cannot detect that some variables are type-hinted before a for-loop
+    R0903, # too-few-public-methods -- this hits e.g. the peewee BaseModels
+    R0913, # too-many-arguments -- leave it up to the programmers to decide this
+    W0107, # unnecessary-pass -- leave it up to the programmers to decide this
+    R1710, # inconsistent-return-statements -- leave it up to the programmers to decide this
+    W0122, # exec-used -- as this module only works locally (no networking), executing arbitrary code bears no threats
+
+[BASIC]
+
+# Naming style matching correct argument names.
+argument-naming-style=snake_case
+
+# Regular expression matching correct argument names. Overrides argument-
+# naming-style.
+#argument-rgx=
+
+# Naming style matching correct attribute names.
+attr-naming-style=snake_case
+
+# Regular expression matching correct attribute names. Overrides attr-naming-
+# style.
+#attr-rgx=
+
+# Bad variable names which should always be refused, separated by a comma.
+bad-names=foo,
+          bar,
+          baz,
+          toto,
+          tutu,
+          tata
+
+# Good variable names which should always be accepted, separated by a comma.
+good-names=i,
+           j,
+           k,
+           ex,
+           Run,
+           _,
+           df,
+           ax
+
+
+[FORMAT]
+
+# Maximum number of characters on a single line.
+max-line-length=121
