@@ -15,7 +15,6 @@ username = config["COUCHDB_USER"]
 password = config["COUCHDB_PASSWORD"]
 server_url = config["COUCHDB_URL"]  # Assume Docker host to be localhost
 
-ssl_verification = True
 con = CouchDBConnection(server_url, username, password, ssl_verification=False)
 
 if len(sys.argv) <= 2 or sys.argv[1] not in ('reactivate', 'deactivate'):
