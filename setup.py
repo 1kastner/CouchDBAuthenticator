@@ -38,7 +38,8 @@ setup(
         'dev': [
             # Only needed for development
             'flake8',
-            'pylint'
+            'pylint',
+            'twine'
         ]
     }
 )
