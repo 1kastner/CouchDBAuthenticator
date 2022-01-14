@@ -34,7 +34,7 @@ class CouchDBAuthenticator(Authenticator):
     )
 
     @gen.coroutine
-    async def authenticate(self, handler, data):
+    async def authenticate(self, _, data):
         username = data['username']
         provided_password = data['password']
 
