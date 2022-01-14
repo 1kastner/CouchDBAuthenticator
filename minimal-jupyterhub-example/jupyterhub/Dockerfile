@@ -11,7 +11,7 @@ RUN mkdir /srv/jupyterhub/cert \
 
 COPY minimal-jupyterhub-example/jupyterhub/jupyterhub_config.py /srv/jupyterhub/jupyterhub_config.py
 
-COPY . /root/
+COPY . /root/couchdbauthenticator
 
-RUN pip install -e /root/ \
+RUN pip install -e /root/couchdbauthenticator \
     && adduser --disabled-password --gecos '' hey

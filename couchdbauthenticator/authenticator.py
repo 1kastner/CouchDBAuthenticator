@@ -35,7 +35,7 @@ class CouchDBAuthenticator(Authenticator):
     )
 
     @gen.coroutine
-    async def authenticate(self, _, data):
+    def authenticate(self, _, data):
         username = data['username']
         provided_password = data['password']
 
@@ -61,13 +61,13 @@ class CouchDBAuthenticator(Authenticator):
             raise Exception(f"Malformed response of CouchDB search query: '{response}'")
 
         if len(parsed_response["docs"]) == 0:
-            self.log.info(f"provided user name '{username}' not existent")
+            self.log.info(f"Provided user name '{username}' not existent")
             return
         retrieved_user = parsed_response["docs"][0]
         actual_password = retrieved_user["password"]
         if actual_password != provided_password:
-            self.log.info(f"provided password of '{username}' did not match")
+            self.log.info(f"Provided password of '{username}' did not match")
             return
 
-        self.log.debug("User '{provided_username}' logged in")
+        self.log.debug(f"User '{username}' logged in")
         return username

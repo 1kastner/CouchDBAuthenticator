@@ -19,6 +19,7 @@ class CouchDBConnection:
         As the database 'users' is deleted and recreated, that user must be
         an administrator of the CouchDB.
         """
+
         self.server_url = f"https://{server_url}/"
         self.username = username
         self.auth = requests.auth.HTTPBasicAuth(username, password)

@@ -16,10 +16,12 @@ password = config["COUCHDB_PASSWORD"]
 server_url = config["COUCHDB_URL"]  # Assume Docker host to be localhost
 
 # Create CouchDB system database '_users'
-# See https://github.com/apache/couchdb-docker#no-system-databases-until-the-installation-is-finalized for details.
+# See https://github.com/apache/couchdb-docker#no-system-databases-until-the-installation-is-finalized
+# for details.
 response = requests.put(
-    server_url + "_users",
+    f"https://{server_url}/_users",
     auth=requests.auth.HTTPBasicAuth(username, password),
     verify=False
 )
-assert response.status_code in (201, 202), "Creation of database '_users' failed"
+assert response.status_code in (201, 202), \
+    f"Creation of database '_users' failed with status code {response.status_code}, maybe it already exists?"
