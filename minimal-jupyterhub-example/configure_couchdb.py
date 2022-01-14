@@ -4,9 +4,10 @@ after starting the Docker container. This helps to reduce the amount of logged
 messages of the CouchDB Docker container.
 """
 
+import warnings
 import requests
 import dotenv
-import warnings
+
 warnings.filterwarnings('once', message='Unverified HTTPS request')
 
 config = dotenv.dotenv_values("couchdb_credentials.env")
