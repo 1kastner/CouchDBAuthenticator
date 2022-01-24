@@ -58,8 +58,10 @@ class CouchDBAuthenticator(Authenticator):
         )
         parsed_response = response.json()
 
+        response.raise_for_status()
+
         if not hasattr(parsed_response, "keys") or "docs" not in parsed_response.keys():
-            raise Exception(f"Malformed response of CouchDB search query: '{response}'")
+            raise Exception(f"Malformed response of CouchDB search query: '{response.text}'")
 
         if len(parsed_response["docs"]) == 0:
             self.log.info(f"Provided user name '{username}' not existent")
