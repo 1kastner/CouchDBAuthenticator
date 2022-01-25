@@ -29,7 +29,7 @@ If you need your JupyterHub installation to be highly secure, do *not* use this 
 It trades off some security for a lot of convenience,
 which might or might not be the right tradeoff for your JupyterHub installation.
 
-## Logging people out
+## Logging People Out
 
 If you make any changes to JupyterHub's authentication setup
 that changes which group of users is allowed to log in
