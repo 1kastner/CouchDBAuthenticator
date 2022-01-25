@@ -1,6 +1,4 @@
-FROM jupyterhub/jupyterhub:1.3
-
-RUN pip --no-cache-dir install notebook
+FROM jupyterhub/jupyterhub:2.1
 
 RUN mkdir /srv/jupyterhub/cert \
     && cd /srv/jupyterhub/cert \
@@ -13,5 +11,7 @@ COPY minimal-jupyterhub-example/jupyterhub/jupyterhub_config.py /srv/jupyterhub/
 
 COPY . /root/couchdbauthenticator
 
-RUN pip install -e /root/couchdbauthenticator \
+RUN python3 -m pip --no-cache-dir install notebook \
+    && python3 -m pip --no-cache install /root/couchdbauthenticator/ \
+    && python3 -c 'import couchdbauthenticator; print(couchdbauthenticator.__version__)' \
     && adduser --disabled-password --gecos '' hey
